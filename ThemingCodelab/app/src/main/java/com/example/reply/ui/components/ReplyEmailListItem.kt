@@ -53,7 +53,12 @@ fun ReplyEmailListItem(
             .padding(horizontal = 16.dp, vertical = 4.dp)
             .semantics { selected = isSelected }
             .clickable { navigateToDetail(email.id) },
-    ) {
+        colors = CardDefaults.cardColors(
+            containerColor = if (email.isImportant)
+                MaterialTheme.colorScheme.secondaryContainer
+            else MaterialTheme.colorScheme.surfaceVariant
+        )
+    ){
         Column(
             modifier = Modifier
                 .fillMaxWidth()

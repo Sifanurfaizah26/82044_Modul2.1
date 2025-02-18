@@ -50,7 +50,10 @@ fun ReplyInboxScreen(
     navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
+    LargeFloatingActionButton(
+        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+    ){
     val emailLazyListState = rememberLazyListState()
 
     Box(modifier = modifier.fillMaxSize()) {

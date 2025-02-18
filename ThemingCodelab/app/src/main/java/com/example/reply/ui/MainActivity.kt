@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val uiState by viewModel.uiState.collectAsState()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             ReplyApp(
                 replyHomeUIState = uiState,
                 closeDetailScreen = {
@@ -35,21 +35,41 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+Surface(
+modifier = modifier,
+tonalElevation = {..}
+shadowElevation = {..}
+) {
+    Column(content = content)
+}
+
+AppTheme {
+    Surface(tonalElevation = 5.dp) {
+        ReplyApp(
+            replyHomeUIState = uiState,
+            // other parameters
+        )
+    }
+}
+
+
 @Preview(
-    uiMode = UI_MODE_NIGHT_YES,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
     name = "DefaultPreviewDark"
 )
 @Preview(
-    uiMode = UI_MODE_NIGHT_NO,
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
     name = "DefaultPreviewLight"
 )
 @Composable
-fun ReplyAppPreviewLight() {
-    ReplyApp(
-        replyHomeUIState = ReplyHomeUIState(
-            emails = LocalEmailsDataProvider.allEmails
+fun ReplyAppPreview() {
+    AppTheme {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(
+                emails = LocalEmailsDataProvider.allEmails
+            )
         )
-    )
+    }
 }
 
 @Composable
@@ -111,3 +131,4 @@ class CounterViewModel : ViewModel() {
         count++
     }
 }
+
