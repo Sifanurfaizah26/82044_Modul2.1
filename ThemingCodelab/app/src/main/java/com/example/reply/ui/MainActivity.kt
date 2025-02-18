@@ -67,3 +67,63 @@ fun ReplyAppPreviewLight() {
         )
     )
 }
+
+@Composable
+fun Counter(count: Int, onIncrement: () -> Unit) {
+    Button(onClick = onIncrement) {
+        Text("Count: $count")
+    }
+}
+
+@Composable
+fun CounterScreen() {
+    var count by remember { mutableStateOf(0) }
+    Counter(count, onIncrement = { count++ })
+}
+
+@Composable
+fun SideEffectExample(counter: Int) {
+    LaunchedEffect(counter) {
+        println("Counter changed: $counter")
+    }
+}
+
+@Composable
+fun AppNavigation() {
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = "home") {
+        composable("home") { HomeScreen(navController) }
+        composable("details/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")
+            DetailScreen(id)
+        }
+    }
+}
+
+class CounterViewModel : ViewModel() {
+    var count by mutableStateOf(0)
+        private set
+
+    fun increment() {
+        count++
+    }
+}
+
+@Composable
+fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
+    Counter(viewModel.count, viewModel::increment)
+}
+
+@Composable
+fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
+    Counter(count = viewModel.count, onIncrement = { viewModel.increment() })
+}
+
+class CounterViewModel : ViewModel() {
+    var count by mutableStateOf(0)
+        private set
+
+    fun increment() {
+        count++
+    }
+}
