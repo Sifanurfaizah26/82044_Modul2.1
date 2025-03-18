@@ -85,6 +85,7 @@ fun ReplyEmailListItem(
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+
                     Text(
                         text = email.subject,
                         style = MaterialTheme.typography.titleLarge,
