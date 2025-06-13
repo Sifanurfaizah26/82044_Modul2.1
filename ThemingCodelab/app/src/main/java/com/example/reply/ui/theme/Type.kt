@@ -37,6 +37,7 @@ val typography = Typography(
         lineHeight = 32.sp,
         letterSpacing = 0.0.sp
     ),
+
     bodyLarge = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
