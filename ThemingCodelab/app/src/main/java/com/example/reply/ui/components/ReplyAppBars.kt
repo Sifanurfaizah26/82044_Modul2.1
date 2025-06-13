@@ -52,6 +52,7 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
                 CircleShape
             ),
 
+
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
