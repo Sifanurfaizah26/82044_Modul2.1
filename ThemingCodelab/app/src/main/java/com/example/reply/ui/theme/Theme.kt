@@ -94,6 +94,7 @@ fun AppTheme(
                 .isAppearanceLightStatusBars = useDarkTheme
         }
     }
+
     MaterialTheme(
         colorScheme = colors,
         typography = typography,

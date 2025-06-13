@@ -92,6 +92,7 @@ fun SideEffectExample(counter: Int) {
     }
 }
 
+
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()

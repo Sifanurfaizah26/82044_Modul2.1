@@ -51,6 +51,7 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
                 MaterialTheme.colorScheme.background,
                 CircleShape
             ),
+
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
